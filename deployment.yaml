@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: extra-credit
+spec:
+  # 3 instances per the reqs!
+  replicas: 3
+  selector:
+    matchLabels:
+      app: extra-credit
+  template:
+    metadata:
+      labels:
+        app: extra-credit
+    spec:
+      containers:
+      - name: extra-credit-app
+        # image targets my artifact!
+        image: us-central1-docker.pkg.dev/extra-credit-347021/extra-credit-repo/ec:latest
+        # This app listens on port 8080 for web traffic by default.
+        ports:
+        - containerPort: 8080
+        env:
+          - name: PORT
+            value: "8080"

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: extra-credit
+spec:
+  type: LoadBalancer
+  selector:
+    app: extra-credit
+  ports:
+  - port: 80
+    targetPort: 8080
